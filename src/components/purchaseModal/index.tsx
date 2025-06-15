@@ -12,7 +12,8 @@ interface Props {
 const PurchaseModal = ({ isOpen, onClose }: Props) => {
     const [quantity, setQuantity] = useState('');
     const [phone, setPhone] = useState('');
-    const [submitted, setSubmitted] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    //성공 s
     const handleSubmit = async () => {
         try {
             const response = await fetch(
@@ -33,6 +34,7 @@ const PurchaseModal = ({ isOpen, onClose }: Props) => {
             if (!response.ok) throw new Error('응답 실패');
             const result = await response.json();
             console.log(result);
+            setIsSuccess(true);
             alert('✅ 신청이 완료되었습니다!');
         } catch (error) {
             console.error('신청 중 오류 발생:', error);
@@ -51,7 +53,7 @@ const PurchaseModal = ({ isOpen, onClose }: Props) => {
 
                 <Dialog.Title className="text-lg font-bold text-gray-800">구매 신청</Dialog.Title>
 
-                {submitted ? (
+                {isSuccess ? (
                     <p className="mt-6 text-sm text-green-700">✅ 신청이 완료되었습니다! 확인 후 연락드리겠습니다.</p>
                 ) : (
                     <div className="mt-4 space-y-4">
