@@ -178,7 +178,7 @@ const ProductDetail = ({ product }: Props) => {
                             onClick={() => setIsModalOpen(true)}
                             className="w-full px-6 py-3 font-medium text-white bg-[#237E79] hover:bg-[#1b645f] transition rounded-xl shadow-md"
                         >
-                            구매하러 가기
+                            구매 신청하기
                         </button>
                     </div>
                 </div>
